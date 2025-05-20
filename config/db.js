@@ -1,19 +1,24 @@
-import { Sequelize } from "sequelize"; 
+import Sequelize from 'sequelize';
 
-const db = new Sequelize('agenciaviajes', 'root', '', {
-    host: '127.0.0.1',
-    port: '3306',
+const db = new Sequelize(
+  'b5tkpullu8pj3dqpwwio', // base de datos
+  'uonifjw3nrbrwjz8',     // usuario
+  '1QRne9ZxXVo6Qs3vL13Y', // contraseña
+  {
+    host: 'b5tkpullu8pj3dqpwwio-mysql.services.clever-cloud.com',
     dialect: 'mysql',
+    port: process.env.DB_PORT || 3306, // agregar explícitamente el puerto si es necesario
     define: {
-        timestamps: false // Desactivar los campos createdAt y updatedAt
+      timestamps: false
     },
     pool: {
-        max: 5, // Número máximo de conexiones en el pool
-        min: 0, // Número mínimo de conexiones en el pool
-        acquire: 30000, // Tiempo máximo para adquirir una conexión (en ms)
-        idle: 10000 // Tiempo máximo que una conexión puede estar inactiva antes de ser liberada (en ms)
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
     },
-    operatorAliases: false, // Desactivar los alias de operadores (opcional)
-});
+    operatorsAliases: false
+  }
+);
 
-export default db; // Exportar la instancia de Sequelize para usarla en otros archivos
+export default db;
